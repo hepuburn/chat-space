@@ -1,4 +1,4 @@
-## groupテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -22,7 +22,7 @@
 - belongs_to :user
 
 
-## userテーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -36,7 +36,7 @@
 - has_many   :groups, through: :groups_users
 
 
-## messageテーブル
+## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
