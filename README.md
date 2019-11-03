@@ -2,15 +2,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false |
-|user_id|references|null: false, 
-
+|name|string|null: false | 
 
 
 ### Association
 - has_many :messages
 - has_many   :groups_users
-- has_many   :users
 - has_many   :users, through: :groups_users
 
 ## groups_usersテーブル
