@@ -1,0 +1,28 @@
+@import "./reset";
+@import "font-awesome-sprockets";
+@import "./font-awesome";
+
+.char-side{
+	width: 300px;
+	color: white;
+	float: left;
+}
+
+.side-header{
+	background-color: #253141;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	padding: 20px;
+}
+
+.side-header__box{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: bold;
+}
+
+.side-header__box__menu{
+	list-style: none;
+}
