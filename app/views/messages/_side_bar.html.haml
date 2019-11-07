@@ -1,6 +1,25 @@
-ぐるーぷ
 
-= link_to("#") do 
- <span class="fas fa-edit"></span>
-= link_to("#") do 
- <span class="fas fa-cog"></span>
+
+
+%div.chat-side
+
+		%div.side-header
+
+				%div.side-header__box
+
+
+						%p.side-header__box__user-name
+								名前
+								%ul.side-header__box__menu
+							
+										%li.side-header__box__menu__new-group
+												= link_to new_path do
+                        = fa_icon 'edit'
+											   
+														
+
+										%li.side-header__box__menu__edit-user
+												%i.fa-con
+
+
+%div.goroups
