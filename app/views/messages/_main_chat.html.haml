@@ -16,13 +16,15 @@
 				.message__upper-info__talker
 					グループ
 				.message__upper-info__date
-					2019/11/09(Sat) 01:33:4
+					2019/11/09(Sat) 01:33:40
 			.message__text
 				テキスト
 		.new_message
 	.form
 		.form.new_message
 			.input-box
+				%input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
 				%label{class: "input-box__image"}
 					%i.fa.fa-image
-						%input#file_button{:type => "file"}/
+						%input#file_button{type: "file"}/
+			%input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
