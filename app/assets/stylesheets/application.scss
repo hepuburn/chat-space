@@ -141,7 +141,7 @@ font-size: 11px;
   padding: 10px 20px;
   background-color: #ddd;
 
-&.new_message{
+.form__message{
   display: flex;
   position: relative;
   margin: auto;
@@ -149,8 +149,9 @@ font-size: 11px;
 .input-box{
   position: relative;
   width: 100%;
+  display: none;
 
-&__text{
+.form__message{
   height: 50px;
   width: 100%;
   padding: 0 40px 0 10px;
@@ -158,7 +159,7 @@ font-size: 11px;
   border-style: none;
 }
 
-&__image{
+.input-box__image{
   font-size: 1.3rem;
   position: absolute;
   top: 10px;
@@ -167,12 +168,12 @@ font-size: 11px;
 }
 
 
-#file_button{
+.hidden{
   display: none;
   }
 }
 
-.submit-btn{
+.form__submit{
   width: 100px;
   height: 50px;
   padding: 0 30px;

@@ -10,6 +10,7 @@
 		.main-header__edit-btn
 			Edit
 	.messages
+		= render @messages
 		.message
 			.message__upper-info
 				
@@ -20,10 +21,11 @@
 			.message__text
 				テキスト
 	.form
-		.form.new_message
+		= form_for [@group, @message] do |f|
 			.input-box
-				%input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
-				%label{class: "input-box__image"}
-					%i.fa.fa-image
-						%input#file_button{type: "file"}/
-			%input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
+				= f.text_field :content, class: 'form__message', placeholder: 'type a message'
+				.form__mask
+					%label{class: "input-box__image"}
+						%i.fa.fa-image
+							= f.file_field :image, class: 'hidden'
+				= f.submit 'Send', class: 'form__submit'
