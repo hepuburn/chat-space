@@ -1,29 +1,22 @@
 .chat-main
-	.main-header
-		.main-header__left-box
-			.main-header__left-box__currrent-group
-				グループ
-			.main-header__left-box__member-list
-				メンバー :
-				.main-header__left-box__member-list__member
-					とくめい
-		.main-header__edit-btn
-			Edit
-	.messages
-		.message
-			.message__upper-info
-				
-				.message__upper-info__talker
-					グループ
-				.message__upper-info__date
-					2019/11/09(Sat) 01:33:40
-			.message__text
-				テキスト
-	.form
-		.form.new_message
-			.input-box
-				%input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
-				%label{class: "input-box__image"}
-					%i.fa.fa-image
-						%input#file_button{type: "file"}/
-			%input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
+  .main-header
+    .main-header__left-box
+      .main-header__left-box__currrent-group
+        = @group.name
+      .main-header__left-box__member-list
+        メンバー :
+        .main-header__left-box__member-list__member
+          -@members.each do |member|
+            =member.name
+    .main-header__edit-btn
+      = link_to 'Edit', edit_group_path(@group.id)
+  .messages
+    = render @messages
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          %i.fa.fa-image
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
