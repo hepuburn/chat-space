@@ -35,6 +35,13 @@ a{
   list-style: none;
   display: flex;
 
+&__new-group{
+  font-size: 1rem;
+}
+
+&__edit-user{
+  font-size: 1rem;
+}
 .icon {
   color: #fafafa;
   margin-left: 0.3rem;
@@ -122,33 +129,28 @@ font-size: 11px;
   background-color: #fafafa;
   overflow: scroll;
 
+
 .message{
   padding-bottom: 40px;
-
-&__upper-info{
+} 
+.upper-message{
+  
   display: flex;
-  margin-bottom: 10px;
 
-&__talker{
-  color: #434a54;
-  font-size: 16px;
+&__user-name{
+  margin-bottom: 10px;
   font-weight: bold;
 }
 
 &__date{
-  color: #999999;
+  color: lightgrey;
   font-size: 12px;
-  margin-left: 10px;
-  }
-}
-
-&__text{
-  color: #434a54;
-  font-size: 14px;
-  margin-bottom: 10px;
+  padding-left: 10px;
       }
     }
   }
+
+
 
   .form {
     background-color: #DDDDDD;
