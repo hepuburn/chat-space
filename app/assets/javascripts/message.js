@@ -15,9 +15,9 @@ $(function(){
                     <p class="lower-message__content">
                       ${content}
                       ${img}
-                        </p>
-                          </div>
-                            </div>`
+                      </p>
+                    </div>
+                  </div>`
     return html;
   }
     $('#new_message').on('submit', function(e){
