@@ -46,5 +46,21 @@ $(function(){
       .always(function(data){
         $('.form__submit').prop('disabled', false);
       })
+
+      var reloadMessages = function () {
+        last_message_id = $('.message:last').data("message-id");
+        $.ajax({
+          url: "api/messages",
+          type: 'get',
+          dataType: 'json',
+          data: {last_id: last_message_id}
+        })
+        .done(function(messages) {
+          console.log('success');
+        })
+        .fail(function() {
+          console.log('error');
+        });
+      };
     })
   })
