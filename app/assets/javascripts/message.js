@@ -2,13 +2,13 @@ $(function(){
   function buildHTML(message) {
     var content = message.content ? `${ message.content }` : "";
     var img = message.image ? `<img src= ${ message.image }>` : "";
-    var html = `<div class="message">
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${message.user_name}
                         </div>
                   <div class="upper-message__date">
-                    ${message.date}
+                  rake db:migrate:status              ${message.date}
                       </div>
                         </div>
                   <div class="lower-message">
@@ -20,11 +20,11 @@ $(function(){
                   </div>`
     return html;
   }
+  
     $('#new_message').on('submit', function(e){
       e.preventDefault();
       var message = new FormData(this);
       var url = $(this).attr('action')
-
       $.ajax({  
         url: url,
         type: 'POST',
@@ -46,21 +46,28 @@ $(function(){
       .always(function(data){
         $('.form__submit').prop('disabled', false);
       })
-
-      var reloadMessages = function () {
-        last_message_id = $('.message:last').data("message-id");
-        $.ajax({
-          url: "api/messages",
-          type: 'get',
-          dataType: 'json',
-          data: {last_id: last_message_id}
-        })
-        .done(function(messages) {
-          console.log('success');
-        })
-        .fail(function() {
-          console.log('error');
-        });
-      };
     })
-  })
+    var reloadMessages = function() {
+      if (window.location.href.match(/\/groups\/\d+\/messages/)){ 
+      last_message_id = $('.message:last').data("message-id");
+      $.ajax({
+        url: "api/messages",
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.messages').append(insertHTML);
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      })
+      .fail(function() {
+        console.log('error');
+      });
+    };
+    setInterval(reloadMessages, 7000);
+    };
+  });
