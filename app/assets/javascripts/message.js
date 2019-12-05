@@ -8,7 +8,7 @@ $(function(){
                       ${message.user_name}
                         </div>
                   <div class="upper-message__date">
-                  rake db:migrate:status              ${message.date}
+                    ${message.date}
                       </div>
                         </div>
                   <div class="lower-message">
@@ -48,7 +48,7 @@ $(function(){
       })
     })
     var reloadMessages = function() {
-      if (window.location.href.match(/\/groups\/\d+\/messages/)){ 
+      if (window.location.href.match(/\/groups\/\d+\/messages/)){
       last_message_id = $('.message:last').data("message-id");
       $.ajax({
         url: "api/messages",
@@ -68,6 +68,6 @@ $(function(){
         console.log('error');
       });
     };
+  };
     setInterval(reloadMessages, 7000);
-    };
   });
